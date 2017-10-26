@@ -1,11 +1,14 @@
 package com.cooney;
 
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@Component("connectionProvide")
 public class RDSConnectionProvider implements ConnectionProvider {
+
     public Connection getConnection() throws SQLException {
         return null;
     }
