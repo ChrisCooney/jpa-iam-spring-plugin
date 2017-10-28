@@ -1,4 +1,4 @@
-package com.cooney.ship;
+package com.cooney.jisp;
 
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.rds.auth.GetIamAuthTokenRequest;

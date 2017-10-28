@@ -1,4 +1,4 @@
-package com.cooney.ship;
+package com.cooney.jisp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
