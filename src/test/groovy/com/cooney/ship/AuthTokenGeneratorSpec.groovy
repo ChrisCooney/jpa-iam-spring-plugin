@@ -1,4 +1,4 @@
-package com.cooney
+package com.cooney.ship
 
 import com.amazonaws.services.rds.auth.GetIamAuthTokenRequest
 import com.amazonaws.services.rds.auth.RdsIamAuthTokenGenerator

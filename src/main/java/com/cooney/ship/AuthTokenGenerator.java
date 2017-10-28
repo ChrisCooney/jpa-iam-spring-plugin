@@ -1,13 +1,9 @@
-package com.cooney;
+package com.cooney.ship;
 
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.rds.auth.GetIamAuthTokenRequest;
 import com.amazonaws.services.rds.auth.RdsIamAuthTokenGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component
 public class AuthTokenGenerator {
 
     private String rdsDatabaseUser;
@@ -17,12 +13,11 @@ public class AuthTokenGenerator {
 
     private RdsIamAuthTokenGenerator tokenGenerator;
 
-    @Autowired
     public AuthTokenGenerator(
-            @Value("rds.database.user") String rdsDatabaseUser,
-            @Value("rds.region.name") String rdsRegionName,
-            @Value("rds.instance.host") String rdsInstanceHostName,
-            @Value("rds.instance.port") int rdsInstancePort
+            String rdsDatabaseUser,
+            String rdsRegionName,
+            String rdsInstanceHostName,
+            int rdsInstancePort
     ) {
         this.rdsDatabaseUser = rdsDatabaseUser;
         this.rdsRegionName = rdsRegionName;
