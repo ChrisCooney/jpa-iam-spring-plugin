@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "rds.auth.db-user",
+      "type": "java.lang.String",
+      "description": "User that has been created in the database that this application will use."
+    },
+    {
+      "name": "rds.auth.region",
+      "type": "java.lang.String",
+      "description": "The region in which the database is running."
+    },
+    {
+      "name": "rds.auth.db-host",
+      "type": "java.lang.String",
+      "description": "The host name of the RDS box that the DB is running on."
+    },
+    {
+      "name": "rds.auth.db-port",
+      "type": "java.lang.String",
+      "description": "The port that the DB is available on."
+    }
+  ]
+}

@@ -9,24 +9,24 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-public class RDSIAMConfiguration {
+public class JispConfiguration {
 
     private String rdsDatabaseUser;
     private String rdsRegionName;
     private String jdbcUrl;
     private String rdsInstanceHostName;
     private String driverClassName;
-    private int rdsInstancePort;
+    private String rdsInstancePort;
 
 
     @Autowired
-    public RDSIAMConfiguration(
-            @Value("rds.auth.database.user") String rdsDatabaseUser,
-            @Value("rds.auth.region.name") String rdsRegionName,
-            @Value("rds.auth.instance.host") String rdsInstanceHostName,
-            @Value("rds.auth.instance.port") int rdsInstancePort,
-            @Value("spring.datasource.url") String jdbcUrl,
-            @Value("spring.datasource.driver-class-name") String driverClassName) {
+    public JispConfiguration(
+            @Value("${rds.auth.db-user}") String rdsDatabaseUser,
+            @Value("${rds.auth.region}") String rdsRegionName,
+            @Value("${rds.auth.db-host}") String rdsInstanceHostName,
+            @Value("${rds.auth.db-port}") String rdsInstancePort,
+            @Value("${spring.datasource.url}") String jdbcUrl,
+            @Value("${spring.datasource.driver-class-name}") String driverClassName) {
 
         this.rdsDatabaseUser = rdsDatabaseUser;
         this.rdsRegionName = rdsRegionName;
@@ -53,7 +53,7 @@ public class RDSIAMConfiguration {
                 rdsDatabaseUser,
                 rdsRegionName,
                 rdsInstanceHostName,
-                rdsInstancePort
+                Integer.valueOf(rdsInstancePort)
         );
     }
 

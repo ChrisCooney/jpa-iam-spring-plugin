@@ -3,6 +3,9 @@ package com.cooney.jisp;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.rds.auth.GetIamAuthTokenRequest;
 import com.amazonaws.services.rds.auth.RdsIamAuthTokenGenerator;
+import org.springframework.util.StringUtils;
+
+import java.security.InvalidParameterException;
 
 public class AuthTokenGenerator {
 
@@ -24,7 +27,34 @@ public class AuthTokenGenerator {
         this.rdsInstanceHostName = rdsInstanceHostName;
         this.rdsInstancePort = rdsInstancePort;
 
+        validateMembers();
         initTokenGenerator();
+    }
+
+    private void validateMembers() {
+        StringBuilder messageBuilder = new StringBuilder();
+
+        if(StringUtils.isEmpty(rdsDatabaseUser)) {
+            messageBuilder.append("Database user can not be blank.\n");
+        }
+
+        if(StringUtils.isEmpty(rdsRegionName)) {
+            messageBuilder.append("Database region can not be blank.\n");
+        }
+
+        if(StringUtils.isEmpty(rdsInstanceHostName)) {
+            messageBuilder.append("Database instance host name can not be blank.\n");
+        }
+
+        if(rdsInstancePort < 0) {
+            messageBuilder.append("Database instance port can not be blank.\n");
+        }
+
+        String message = messageBuilder.toString();
+
+        if(!StringUtils.isEmpty(message)) {
+            throw new InvalidParameterException(message);
+        }
     }
 
     private void initTokenGenerator() {
