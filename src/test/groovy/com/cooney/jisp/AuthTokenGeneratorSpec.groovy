@@ -45,20 +45,20 @@ class AuthTokenGeneratorSpec extends Specification {
         where:
 
         name | region | host | port || exception
-        'a'  | 'a'    | 'a'  | -1 || InvalidParameterException
+        'a'  | 'a'    | 'a'  | -1   || InvalidParameterException
         'a'  | 'a'    | null | 1    || InvalidParameterException
-        'a'  | 'a'    | null | -1 || InvalidParameterException
+        'a'  | 'a'    | null | -1   || InvalidParameterException
         'a'  | null   | 'a'  | 1    || InvalidParameterException
-        'a'  | null   | 'a'  | -1 || InvalidParameterException
+        'a'  | null   | 'a'  | -1   || InvalidParameterException
         'a'  | null   | null | 1    || InvalidParameterException
-        'a'  | null   | null | -1 || InvalidParameterException
+        'a'  | null   | null | -1   || InvalidParameterException
         null | 'a'    | 'a'  | 1    || InvalidParameterException
-        null | 'a'    | 'a'  | -1 || InvalidParameterException
+        null | 'a'    | 'a'  | -1   || InvalidParameterException
         null | 'a'    | null | 1    || InvalidParameterException
-        null | 'a'    | null | -1 || InvalidParameterException
+        null | 'a'    | null | -1   || InvalidParameterException
         null | null   | 'a'  | 1    || InvalidParameterException
-        null | null   | 'a'  | -1 || InvalidParameterException
+        null | null   | 'a'  | -1   || InvalidParameterException
         null | null   | null | 1    || InvalidParameterException
-        null | null   | null | -1 || InvalidParameterException
+        null | null   | null | -1   || InvalidParameterException
     }
 }
