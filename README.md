@@ -37,21 +37,33 @@ your favourite Java dependency manager.
 to get the end to end solution. Firstly, you'll need to work through the [AWS Documentation](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 so your environment has the correct certificates in the correct places.
 
-Once this is done, you'll need to add some values into your application configuration. For the purposes of example,
-i'll give an example `application.properties`.
+Once this is done, there are two more steps. Firstly, you'll need to tell your Spring application to use the configuration
+inside the library. To do this in a spring boot application, we've included the following in our main class:
 
 ```
-rds.auth.database.user=Chris
-rds.auth.region.name=eu-west-1
-rds.auth.instance.host=my.rds.database.host.name
-rds.auth.instance.port=3356
 ```
 
-Additionally, the application depends on some standard datasource properties being set.
+Finally, your configuration will need to set the correct parameters. To do this, you'll need to update your application
+configuration file. As an example, here is a complete `application.yml` that would work with this library:
 
-```
-spring.datasource.url=jdbc://my.rds.database.host.name
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+```yml
+server:
+  port: 5000
+
+spring:
+  jpa:
+    database: MYSQL
+
+  datasource:
+    url:  jdbc:mysql://my-db.eu-west-1.rds.amazonaws.com:3306/db-name?verifyServerCertificate=true&useSSL=true&requireSSL=true
+    driver-class-name: com.mysql.jdbc.Driver
+
+rds:
+  auth:
+    db-user: Chris
+    region: eu-west-1
+    db-host: my-db.eu-west-1.rds.amazonaws.com
+    db-port: 3306
 ```
 
 ## How it works
