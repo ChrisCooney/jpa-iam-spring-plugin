@@ -38,9 +38,16 @@ to get the end to end solution. Firstly, you'll need to work through the [AWS Do
 so your environment has the correct certificates in the correct places.
 
 Once this is done, there are two more steps. Firstly, you'll need to tell your Spring application to use the configuration
-inside the library. To do this in a spring boot application, we've included the following in our main class:
+inside the library. To do this in a spring boot application, your main class might look like this:
 
-```
+```java
+@SpringBootApplication
+@Import(JispConfiguration.class) // This is the necessary bit that wires in the custom dataSource bean.
+public class TestProject {
+    public static void main(String[] args) {
+        SpringApplication.run(TestProject.class, args);
+    }
+}
 ```
 
 Finally, your configuration will need to set the correct parameters. To do this, you'll need to update your application
