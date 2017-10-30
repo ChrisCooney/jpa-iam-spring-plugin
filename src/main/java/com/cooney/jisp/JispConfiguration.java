@@ -38,11 +38,13 @@ public class JispConfiguration {
 
     @Bean
     public DataSource dataSource() {
+        String authToken = rdsAuthTokenGenerator().generateAuthToken();
+
         return DataSourceBuilder
                 .create()
                 .username(rdsDatabaseUser)
                 .url(jdbcUrl)
-                .password(rdsAuthTokenGenerator().generateAuthToken())
+                .password(authToken)
                 .driverClassName(driverClassName)
                 .build();
     }

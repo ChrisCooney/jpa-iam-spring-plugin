@@ -6,7 +6,7 @@
 
     <groupId>com.cooney</groupId>
     <artifactId>jisp</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>JISP (JPA IAM Spring Plugin)</name>
